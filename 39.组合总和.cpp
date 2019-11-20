@@ -31,7 +31,8 @@ public:
             path.push_back(candidates[j]);
             DFS(j, target - candidates[j]); // 递归
             path.pop_back();
-        }
+        }// 实际上for结束后还有个return，搜索完所有子结点后，回溯
+        return;
     }
 
     vector<vector<int>> combinationSum(vector<int> &candidates, int target) {
