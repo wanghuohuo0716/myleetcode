@@ -6,6 +6,7 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
+// 这道题与105题思路完全一样，参考105题
 
 // Definition for a binary tree node.
 struct TreeNode{

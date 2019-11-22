@@ -9,7 +9,7 @@ using namespace std;
 // 指定了原地删除肯定是双指针法，而且双指针法一般都事先排序了，一个指向遍历的元素，一个指向可以写入的位置，后者的大小是小于等
 // current为写入的位置，i为遍历的位置，当i处元素与current-1处的元素不同时，则可以写入，否则不能
 // 为什么i处元素与current-1处的元素不同时，则可以写入？这要分析可以写入的条件了。
- // i不能加入到current的情况是：i和current还有current-1处的值都相等 能加入的情况是:i和current的值相等并且i和current-1的值不相等、i和current还有current-1的值都不相等 还有一种情况是不可能出现的情况 ：i和current的值不相等并且i和current-1的值相等 这种情况是不可能出现的 所以可以用i和current-1的值是否相等来判定是否写入的操作
+// i不能加入到current的情况是：i和current还有current-1处的值都相等 能加入的情况是:i和current的值相等并且i和current-1的值不相等、i和current还有current-1的值都不相等 还有一种情况是不可能出现的情况 ：i和current的值不相等并且i和current-1的值相等 这种情况是不可能出现的 所以可以用i和current-1的值是否相等来判定是否写入的操作
 
 // @lc code=start
 class Solution {
