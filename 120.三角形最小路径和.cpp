@@ -7,25 +7,28 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-// 这种最小路径题一般都是动态规划题，贪心的思想，用二维数组dp[i][j]表示到当前节点的最小路径和
-// 递推公式：dp[i][j] = min(dp[i-1][j-1],dp[i-1][j])+triangle[i][j],由于每一行只有一个最小的值，可以把二维数组压缩成一维数组
-// 可以从上往下走，也可以从下往上走，递推公式：dp[i][j] = min(dp[i+1][j-1],dp[i+1][j])+triangle[i][j]
+// 自顶而下的最小路径和与自下而上的最小路径和是相同的，所以既可以从上往下，也可以从下往上递推
 
-// 从上往下走，一共
+// 这种最小路径题一般都是动态规划题，用二维数组dp[i][j]表示到当前节点的最小路径和，注意不是贪心的思想，如果是贪心的思想求出来的结果是错的
+// 从上往下递推公式：dp[i][j] = min(dp[i-1][j-1],dp[i-1][j])+triangle[i][j]
+// 从下往上递推公式：dp[i][j] = min(dp[i+1][j-1],dp[i+1][j])+triangle[i][j]
 
-// 其实我们dp时候每次只用到上一层数据,如果我们倒着,从底向上可以优化成O(n)空间的
+// 如果是从上往下递推，还得计算达到最后一行n个点中，那个点的路径和最小，从一个点分叉走到n个点；
+// 如果是从下往上递推，由于达到的终点是dp[0][0]，所以直接就知道了最下面n个点到顶点的最小路径就是dp[0][0]的值，从n个点汇聚到一个点
+
+// 其实我们dp时候每次只用到上一层数据(上上层及之前的数据都未用到，类似马尔科夫一阶过程),可以优化成O(n)空间复杂度
+
+// DP问题解决的一般步骤：1.找到重复性 2.定义状态数组 3.DP方程 4.初始化数据
 // @lc code=start
 class Solution{
 public:
     int minimumTotal(vector<vector<int>> &triangle){
-        int sum = triangle[0][0], j = 0, temp = 0;
-        for (int i = 0; i+1 < triangle.size(); i++){
-            temp = min(triangle[i+1][j], triangle[i + 1][j + 1]);
-            sum += temp;
-        if (temp!=triangle[i+1][j])
-            j = j + 1;
-        }
-        return sum;
+        int n = triangle.size();
+        vector<int> line(triangle[n - 1]);
+        for (int i = n - 2; i >= 0; i--)
+            for (int j = 0; j <= i; j++)
+                line[j] = triangle[i][j] + min(line[j], line[j + 1]);
+        return line[0];
     }
 };
 // @lc code=end
