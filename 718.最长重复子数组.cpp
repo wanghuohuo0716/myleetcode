@@ -6,7 +6,7 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-// 这个C++的algorithm库是有现成函数的
+// 三种case，像尺子一样滑动比较，控制比较的起点和长度,A数组不动，B数组滑动比较https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/solution/wu-li-jie-fa-by-stg-2/
 // @lc code=start
 class Solution {
 public:
