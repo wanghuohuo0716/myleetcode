@@ -7,6 +7,7 @@
 using namespace std;
 // 维护三个变量来找到分界线，lmax是左边数组最大值，rmax是右边数组最大值，divide作为边界线
 // 当遍历时，lmax大于元素时更新lmax并且更新divide分界线；当rmax小于元素时，更新rmax
+
 // @lc code=start
 class Solution{
 public:
