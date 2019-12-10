@@ -17,12 +17,12 @@ class Solution {
 public:
     vector<string> commonChars(vector<string>& A) {
         vector<string> out;
-        int num[100][26]={0};                  //建立一个二维数组，标记所有出现的字母次数
+        int num[100][26]={0};                  //行数是单词数目，列数是26个字母
         for(int i =0;i<A.size() ;i++)
             for(int j=0;j<A[i].size();j++)
                 num[i][(A[i][j]-'a')]++; //记录每个单词中包含的字母及字母出现的次数，(A[i][j]-'a')将字符串中的字母转换为数组中的索引，这个技巧是写代码的核心竞争力
 
-        for(int j=0;j<26;j++)                  //将所有列的最小值存到第一行
+        for(int j=0;j<26;j++)                  //将每列的最小值存到列首，找出所有字母在该字母下共同出现的字数
             for(int i=1;i<A.size();i++)
                 num[0][j] = min (num[0][j],num[i][j]);
 
