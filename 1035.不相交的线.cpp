@@ -17,6 +17,7 @@ using namespace std;
 // 最后推导出来了递推公式
 
 // 递推公式是f(x,y)=f(x-1,y-1)+1;如果x作为索引，会有负值，所以变成dp[i + 1][j + 1] = dp[i][j] + 1，为避免数组越界，数组长度还要+1
+
 // @lc code=start
 class Solution{
 public:
