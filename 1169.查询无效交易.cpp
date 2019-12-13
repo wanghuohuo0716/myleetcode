@@ -6,8 +6,11 @@
 #include <vector>
 #include <string>
 using namespace std;
-
+// 暴力法
+// 把每条记录拆分成同属性段，对相应的段进行比较，分为数据预处理部分和数据比较部分
 // 不把大于1000的单独拿循环计算，而是放在和其它case在一个循环中，使用continue跳过剩下的代码即可
+
+// 其实有时候暴力法是考验一个人的基本代码能力，如何把问题转换为代码，如何代码建模，可以仔细研究
 
 // @lc code=start
 class Solution{
@@ -39,7 +42,7 @@ public:
                     int a = atoi(trans[i][1].c_str());
                     int b = atoi(trans[j][1].c_str());
                     if (abs(a - b) <= 60){ // 间隔时间在60min以内
-                        ans.push_back(transactions[i]);
+                        ans.push_back(transactions[i]); // i和j的交易时差小于60，把i插件去，而不是j，避免重复
                         break;
                     }
                 }
