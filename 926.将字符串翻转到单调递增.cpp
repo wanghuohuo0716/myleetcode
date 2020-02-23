@@ -11,13 +11,17 @@ using namespace std;
 // 某一位为1时，前面一位是0或者1都可以
 // 某一位为0时，前面一位只能为0
 
+// 动态规划求解
+
 // @lc code=start
 class Solution{
 public:
     int minFlipsMonoIncr(string S){
         int n = S.length();
-        if(n < 2) return 0;
-        int zero = 0, one = 0;
+        if(n < 2)
+            return 0;
+        int zero = 0; // 记录上一次1翻转0的次数
+        int one = 0; // 记录上一次1翻转0的次数
         for(char c : S){
             if(c == '1'){
                 zero = zero + 1;
